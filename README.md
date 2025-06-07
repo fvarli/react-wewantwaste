@@ -1,54 +1,94 @@
-# React + TypeScript + Vite
+# We Want Waste - Skip Hire Selection Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a modern, responsive redesign of the We Want Waste skip hire selection page built with React, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## 🎯 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project completely redesigns the original skip hire selection interface while maintaining all core functionality. The new design focuses on modern UX principles, clean aesthetics, and mobile-first responsive design.
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Modern Card-Based Interface**: Clean, intuitive skip selection with visual cards
+- **Responsive Design**: Optimized for both mobile and desktop experiences
+- **Real-time Data**: Fetches live skip data from the We Want Waste API
+- **Interactive Progress Indicator**: Multi-step process visualization
+- **Smooth Animations**: Hover effects, transitions, and micro-interactions
+- **Price Transparency**: Clear pricing with VAT breakdown
+- **Visual Feedback**: Selected states and loading indicators
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠 Technical Stack
+
+- **React 18** with TypeScript for type safety
+- **Vite** for fast development and building
+- **Tailwind CSS** for utility-first styling
+- **TanStack Query** for efficient data fetching and caching
+- **Lucide React** for modern icons
+
+## 📱 Design Approach
+
+### Visual Design
+- **Clean, Modern Aesthetic**: Minimalist design with plenty of white space
+- **Blue Accent Color**: Professional blue (#2563eb) for primary actions
+- **Subtle Gradients**: Light gradients for depth without distraction
+- **Card-Based Layout**: Each skip presented in an individual card for clarity
+
+### User Experience
+- **Mobile-First**: Designed primarily for mobile, enhanced for desktop
+- **Progressive Enhancement**: Features work across all device sizes
+- **Visual Hierarchy**: Clear information architecture with logical flow
+- **Immediate Feedback**: Instant visual feedback for user interactions
+
+### Responsive Strategy
+- **Grid Layout**: 1 column on mobile, 2 on tablet, 3 on desktop
+- **Flexible Typography**: Responsive text scaling
+- **Touch-Friendly**: Large tap targets for mobile interaction
+- **Fixed Navigation**: Sticky bottom bar for quick access to continue
+
+## 🔧 Installation & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/fvarli/react-wewantwaste.git
+
+# Navigate to project directory
+cd react-wewantwaste
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📊 API Integration
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The application fetches real-time skip data from:
+```
+https://app.wewantwaste.co.uk/api/skips/by-location?postcode=NR32&area=Lowestoft
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+**Data Structure:**
+- Skip size (4-40 yards)
+- Hire period (14 days)
+- Pricing (before VAT + VAT rate)
+- Road placement permissions
+- Heavy waste allowance
+
+## 🎨 Component Architecture
+
+```
+src/
+├── components/
+│   ├── ProgressIndicator.tsx    # Multi-step progress visualization
+│   ├── SkipGrid.tsx            # Grid layout for skip cards
+│   ├── SkipCard.tsx            # Individual skip selection card
+│   ├── LoadingSpinner.tsx      # Loading state component
+│   └── ErrorMessage.tsx        # Error handling component
+├── pages/
+│   └── Index.tsx               # Main page component
+└── hooks/
+    └── use-toast.ts            # Toast notifications
 ```
