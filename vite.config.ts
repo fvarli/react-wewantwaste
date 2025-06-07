@@ -1,27 +1,22 @@
-// vite.config.ts
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import path from "path";
+import { componentTagger } from "lovable-tagger";
 
-export default defineConfig({
+// https://vitejs.dev/config/
+export default defineConfig(({ mode }) => ({
+  server: {
+    host: "::",
+    port: 5173,
+  },
   plugins: [
     react(),
-    tsconfigPaths(),
-    {
-      name: 'tailwindcss',
-      configurePostCss(postcssOptions) {
-        postcssOptions.plugins.push(
-            require('@tailwindcss/postcss')({
-              tailwindConfig: './tailwind.config.ts' // Update path if needed
-            })
-        )
-        return postcssOptions
-      }
-    }
-  ],
+    mode === 'development' &&
+    componentTagger(),
+  ].filter(Boolean),
   resolve: {
     alias: {
-      '@': '/src'
-    }
-  }
-})
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+}));
