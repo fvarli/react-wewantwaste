@@ -18,7 +18,7 @@ This project completely redesigns the original skip hire selection interface whi
 
 ## 🛠 Technical Stack
 
-- **React 18** with TypeScript for type safety
+- **React 19** with TypeScript for type safety
 - **Vite** for fast development and building
 - **Tailwind CSS** for utility-first styling
 - **TanStack Query** for efficient data fetching and caching
